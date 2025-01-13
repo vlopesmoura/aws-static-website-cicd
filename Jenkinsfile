@@ -7,7 +7,7 @@ pipeline {
       }
     }
 
-    stage('Terraform') { 
+    stage('Terrafsorm') { 
       steps {
         withCredentials([vaultSecret(credentialsId: 'your-vault-credentials-id', path: 'secret/aws', secretValues: [string(key: 'AWS_ACCESS_KEY_ID', envVar: 'AWS_ACCESS_KEY_ID'), string(key: 'AWS_SECRET_ACCESS_KEY', envVar: 'AWS_SECRET_ACCESS_KEY')])]) {
           sh '''
