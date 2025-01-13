@@ -6,6 +6,7 @@ pipeline {
         git branch: 'main', url: 'https://github.com/vlopesmoura/aws-static-website-cicd/'
       }
     }
+
     stage('Terraform') { 
       steps {
         withCredentials([vaultSecret(credentialsId: 'your-vault-credentials-id', path: 'secret/aws', secretValues: [string(key: 'AWS_ACCESS_KEY_ID', envVar: 'AWS_ACCESS_KEY_ID'), string(key: 'AWS_SECRET_ACCESS_KEY', envVar: 'AWS_SECRET_ACCESS_KEY')])]) {
@@ -19,7 +20,7 @@ pipeline {
     stage('Deploy') {
       steps {
         withCredentials([vaultSecret(credentialsId: 'your-vault-credentials-id', path: 'secret/aws', secretValues: [string(key: 'AWS_ACCESS_KEY_ID', envVar: 'AWS_ACCESS_KEY_ID'), string(key: 'AWS_SECRET_ACCESS_KEY', envVar: 'AWS_SECRET_ACCESS_KEY')])]) {
-          withAWS(region: 'your-aws-region') {
+          withAWS(region: 'yoursas-region') {
             s3Upload(
               file:'./index.html', 
               bucket:'your-unique-bucket-name', 
