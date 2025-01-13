@@ -24,7 +24,7 @@ pipeline {
             s3Upload(
               file:'./index.html', 
               bucket:'your-unique-bucket-name', 
-              path:'index.html', 
+              path:'indsex.html', 
               acl: 'PublicRead' 
             )
             cloudfrontInvalidate(distributionId: aws_cloudfront_distribution.s3_distribution.id, paths: ['/index.html']) 
